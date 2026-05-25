@@ -1,0 +1,136 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FeedController extends Controller
+{
+    public function index()
+    {
+        $posts = [
+            [
+                'author_name' => 'Marcelo Silva',
+                'author_role' => 'Professor & Dev',
+                'time' => '2 horas',
+                'avatar' => 'img/logo_user.jpg',
+                'content' => 'Sejam todos muito bem-vindos ao DevConnect! 🚀',
+                'description' => 'Estou impressionado com a qualidade do design monocromático de vocês. Ficou extremamente profissional, clean e de fácil navegação.',
+                'image' => null,
+                'likes' => 18,
+                'comments' => 4,
+                'tags' => ['#laravel', '#blade'],
+            ],
+            [
+                'author_name' => 'Beatriz Santos',
+                'author_role' => 'Estudante',
+                'time' => '4 horas',
+                'avatar' => 'img/profile_img.jpg',
+                'content' => 'Pessoal, acabei de estruturar as primeiras rotas no meu projeto Laravel. O Blade facilita muito a herança de layouts!',
+                'description' => null,
+                'image' => null,
+                'likes' => 12,
+                'comments' => 2,
+                'tags' => ['#php', '#mvc'],
+            ],
+            [
+                'author_name' => 'Gabriel Souza',
+                'author_role' => 'Front-end Dev',
+                'time' => '6 horas',
+                'avatar' => 'img/logo_user.jpg',
+                'content' => 'Trabalhei no componente de card para o explorar hoje. Usar arrays nos controllers deixa o feed muito mais fácil de manter.',
+                'description' => 'Ainda quero adicionar filtros por tech stack e categorias na próxima semana.',
+                'image' => 'img/img2.jpg',
+                'likes' => 8,
+                'comments' => 3,
+                'tags' => ['#javascript', '#css'],
+            ],
+            [
+                'author_name' => 'Mariana Costa',
+                'author_role' => 'UX/UI',
+                'time' => '10 horas',
+                'avatar' => 'img/profile_img.jpg',
+                'content' => 'Hoje foquei em melhorar a responsividade do layout e garantir que o menu lateral fique acessível em mobile.',
+                'description' => null,
+                'image' => 'img/screenshot1.png',
+                'likes' => 14,
+                'comments' => 6,
+                'tags' => ['#design', '#responsive'],
+            ],
+            [
+                'author_name' => 'Lucas Pereira',
+                'author_role' => 'Back-end',
+                'time' => '12 horas',
+                'avatar' => 'img/logo_user.jpg',
+                'content' => 'Configurei o controller para enviar os posts como uma matriz. O próximo passo é criar a API interna para carregar mais posts dinamicamente.',
+                'description' => null,
+                'image' => null,
+                'likes' => 21,
+                'comments' => 5,
+                'tags' => ['#php', '#api'],
+            ],
+            [
+                'author_name' => 'Ana Paula',
+                'author_role' => 'Estudante',
+                'time' => '14 horas',
+                'avatar' => 'img/profile_img.jpg',
+                'content' => 'Adicionei um novo card de publicação com imagem. Achei que fica mais atraente no feed.',
+                'description' => 'Ainda preciso refinar o estilo do botão de comentário.',
+                'image' => 'img/screenshot2.png',
+                'likes' => 9,
+                'comments' => 1,
+                'tags' => ['#html', '#css'],
+            ],
+            [
+                'author_name' => 'Rafael Mendes',
+                'author_role' => 'DevOps',
+                'time' => '16 horas',
+                'avatar' => 'img/logo_user.jpg',
+                'content' => 'Melhorei a performance do build com Vite e corrigi o cache do CSS. Agora as mudanças aparecem imediatamente.',
+                'description' => null,
+                'image' => null,
+                'likes' => 11,
+                'comments' => 2,
+                'tags' => ['#vite', '#frontend'],
+            ],
+            [
+                'author_name' => 'Sara Lima',
+                'author_role' => 'Estudante',
+                'time' => '20 horas',
+                'avatar' => 'img/profile_img.jpg',
+                'content' => 'Meu post de hoje: como organizar componentes Blade e views em pastas separadas.',
+                'description' => 'Fica muito mais fácil navegar no projeto quando a estrutura está clara.',
+                'image' => null,
+                'likes' => 15,
+                'comments' => 4,
+                'tags' => ['#blade', '#estrutura'],
+            ],
+            [
+                'author_name' => 'Fernando Reis',
+                'author_role' => 'Full Stack',
+                'time' => '1 dia',
+                'avatar' => 'img/logo_user.jpg',
+                'content' => 'Usei um array de posts no controller e renderizei com foreach na view. É uma boa prática para preparar uma funcionalidade de feed real.',
+                'description' => null,
+                'image' => 'img/screenshot3.png',
+                'likes' => 22,
+                'comments' => 7,
+                'tags' => ['#fullstack', '#laravel'],
+            ],
+            [
+                'author_name' => 'Jéssica Moura',
+                'author_role' => 'Desenvolvedora Júnior',
+                'time' => '2 dias',
+                'avatar' => 'img/profile_img.jpg',
+                'content' => 'Meu novo hack: usar arquivos Blade para separar cabeçalhos e ações de cada post.',
+                'description' => 'Assim o código fica mais limpo e mantém a consistência entre postagens.',
+                'image' => null,
+                'likes' => 13,
+                'comments' => 3,
+                'tags' => ['#developer', '#teamwork'],
+            ],
+        ];
+
+        return view('feed.feed', compact('posts'));
+    }
+}
