@@ -1,58 +1,204 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# DevConnect
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Um projeto Laravel presente neste workspace — uma base para aplicações web construída com Laravel.
 
-## About Laravel
+## Descrição
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplicação Laravel preparada para desenvolvimento local. Contém estrutura padrão (rotas, controllers, views) e scripts para compilação de frontend com Vite.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP (Laravel)
+- Composer
+- Node.js / npm
+- Vite
+- MySQL (ou outro banco compatível)
 
-## Learning Laravel
+## Requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.0+ (verifique a versão no `composer.json`)
+- Composer
+- Node.js 16+ e npm
+- Banco de dados (MySQL, MariaDB, PostgreSQL)
+- Extensões PHP comuns: `pdo`, `mbstring`, `openssl`, `tokenizer`, `xml`
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalação (desenvolvimento)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. Clone o repositório e acesse a pasta do projeto:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <repo-url> devconnect
+cd devconnect
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+2. Instale dependências PHP:
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Instale dependências JS e compile assets em modo de desenvolvimento:
 
-## Code of Conduct
+```bash
+npm install
+npm run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Copie o arquivo de ambiente e gere a chave da aplicação:
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Configure as variáveis do `.env` (conexão com banco, credenciais, etc.) e rode as migrations:
 
-## License
+```bash
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6. Execute o servidor local (ou utilize Laragon/Valet):
+
+```bash
+php artisan serve
+```
+
+O projeto ficará disponível em `http://localhost:8000` por padrão.
+
+## Configurações úteis
+
+- Para usar filas, cache ou broadcast, configure os drivers no arquivo `.env` e os serviços correspondentes.
+- Arquivos relevantes: [routes/web.php](routes/web.php), [app/Models](app/Models), [resources/views](resources/views).
+
+## Testes
+
+Execute os testes com PHPUnit/Laravel:
+
+```bash
+./vendor/bin/phpunit
+```
+
+ou
+
+```bash
+php artisan test
+```
+
+## Estrutura do projeto
+
+- `app/` — Lógica da aplicação (Models, Controllers, Providers)
+- `routes/` — Definição de rotas (`routes/web.php`, `routes/console.php`)
+- `resources/` — Views, assets não compilados (JS/CSS)
+- `public/` — Entrada pública e arquivos compilados
+- `database/` — Migrations, seeders e factories
+
+## Contribuição
+
+1. Abra uma issue para discutir mudanças maiores.
+2. Crie uma branch com o padrão `feature/descricao` ou `fix/descricao`.
+3. Envie um pull request descrevendo as mudanças.
+
+## Licença
+
+Este projeto segue a licença padrão do framework (MIT) salvo indicação em contrário.
+
+---
+
+Se quiser, eu posso também:
+
+- adicionar badges (build, coverage)
+- criar um `README` mais focado no fluxo do projeto (endpoints principais, diagramas)
+- gerar scripts Docker/Compose para desenvolvimento local
+
+
+## Sobre o DevConnect
+
+DevConnect é uma rede social focada em desenvolvedores, construída como atividade didática em Laravel. O objetivo é fornecer uma aplicação mínima com estrutura MVC para que alunos aprendam a organizar views, rotas, controllers e models enquanto adaptam um layout front-end.
+
+A aplicação simula funcionalidades típicas de uma rede social: feed de publicações, perfis de usuário, mensagens privadas e exploração de conteúdo.
+
+## Controllers e Models — explicação para a atividade
+
+**Controllers**:
+
+- **Propósito:** recebem requisições HTTP, executam lógica necessária (consulta a models, validação, persistência) e retornam uma resposta (view, redirect ou JSON).
+- **Controllers principais nesta atividade:** `FeedController`, `PerfilController`, `MensagemController`, `ExplorarController`.
+- **Métodos comuns:**
+  - `index()` — lista recursos (ex.: feed de posts).
+  - `show($id)` — mostra um recurso específico (ex.: perfil de usuário).
+  - `create()` / `store(Request $request)` — exibe formulário e persiste novo recurso.
+  - `edit()` / `update()` — atualiza recursos existentes.
+  - `destroy()` — remove recursos.
+
+Exemplo simples de controller (sintaxe Laravel):
+
+```php
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+
+class FeedController extends Controller
+{
+    public function index()
+    {
+        $posts = Post::latest()->paginate(10);
+        return view('feed.index', compact('posts'));
+    }
+}
+```
+
+- **Rotas:** defina rotas em `routes/web.php` apontando para os controllers, por exemplo:
+
+```php
+use App\Http\Controllers\FeedController;
+
+Route::get('/', [FeedController::class, 'index']);
+Route::get('/perfil/{user}', [PerfilController::class, 'show']);
+```
+
+**Models (Eloquent)**:
+
+- **Propósito:** representam tabelas do banco de dados e permitem consultas e relacionamentos com sintaxe orientada a objetos.
+- **Exemplos comuns:** `User`, `Post`, `Message`, `Comment`.
+- **Recursos importantes:**
+  - **Relacionamentos:** `hasMany`, `belongsTo`, `belongsToMany`, `hasOne`.
+  - **Mass assignment:** defina `$fillable` ou `$guarded` para proteger atributos.
+  - **Factories & Seeders:** facilitam popular dados de teste.
+  - **Accessors / Mutators e Casts:** para formatar atributos automaticamente.
+
+Exemplo de model simples:
+
+```php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    protected $fillable = ['user_id', 'title', 'body'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Fluxo típico em uma ação de publicar (store):**
+
+1. Usuário envia formulário de criação de post para `POST /posts`.
+2. Rota direciona para `PostController@store`.
+3. O controller valida os dados e chama `Post::create($validated)`.
+4. O model persiste no banco e o controller redireciona para o feed.
+
+**Dicas para a atividade:**
+
+- Mantenha controllers enxutos: coloque regras de negócio complexas em serviços ou models quando fizer sentido.
+- Use requests personalizados (`php artisan make:request`) para validação.
+- Aproveite factories em `database/factories` para gerar conteúdo de amostra.
+
+---
+
+Se quiser, eu posso incluir no `README` exemplos de rotas completas, trechos de migrations para `posts` e `messages`, ou adicionar diagramas simples das relações entre `User`, `Post` e `Message`.
+
+Diga qual desses itens prefere que eu adicione.
