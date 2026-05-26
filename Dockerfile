@@ -48,5 +48,12 @@ RUN a2enmod rewrite
 # Copia a configuração personalizada do Apache vhost
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
+# Copia e configura o script de entrada para automação de migrations na inicialização
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Define o script de entrada
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
 # Libera a porta 80 para acesso da aplicação
 EXPOSE 80
