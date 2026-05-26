@@ -20,19 +20,18 @@
 
         <!-- Informações do Perfil -->
         <div class="profile-card__info">
-            <h2 class="profile-card__name">DevAluno</h2>
-            <div class="profile-card__handle">@devaluno &bull; Belo Horizonte, MG</div>
+            <h2 class="profile-card__name">{{ $name }}</h2>
+            <div class="profile-card__handle">{{ $handle }} &bull; {{ $location }}</div>
             
             <p class="profile-card__bio">
-                Estudante de Desenvolvimento de Sistemas no SENAI CTTI. Apaixonado por desenvolvimento web, arquitetura MVC, banco de dados e design minimalista em preto e branco.
+                {{ $bio }}
             </p>
 
             <!-- Badges de Tech Stack -->
             <div style="margin-bottom: 16px;">
-                <span class="explore-card__tech" style="margin-right: 4px;">#php</span>
-                <span class="explore-card__tech" style="margin-right: 4px;">#laravel</span>
-                <span class="explore-card__tech" style="margin-right: 4px;">#javascript</span>
-                <span class="explore-card__tech">#html_css</span>
+                @foreach ($tech_tags as $tag)
+                    <span class="explore-card__tech" style="margin-right: 4px;">{{ $tag }}</span>
+                @endforeach
             </div>
 
             <!-- Estatísticas do Desenvolvedor -->
@@ -59,9 +58,9 @@
     <!-- POST DE EXEMPLO DO PRÓPRIO DEV -->
     <div class="card post">
         <div class="post__header">
-            <img class="post__avatar" src="{{ asset('img/profile_img.jpg') }}" alt="Foto do DevAluno">
+            <img class="post__avatar" src="{{ asset('img/profile_img.jpg') }}" alt="Foto do {{ $name }}">
             <div class="post__user-info">
-                <span class="post__username">DevAluno</span>
+                <span class="post__username">{{ $name }}</span>
                 <span class="post__time">Postado há 1 dia &bull; Você</span>
             </div>
         </div>
