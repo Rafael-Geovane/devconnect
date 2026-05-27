@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Força HTTPS em produção (necessário atrás do reverse proxy do Render)
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
